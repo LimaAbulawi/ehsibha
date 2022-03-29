@@ -1,0 +1,7 @@
+<div *ngFor="let crop of crops;  " class="input" [class.hide]="hidDiv(crop)">
+    <input type="radio" name="radio" class="RInput" value="{{crop}}" [disabled]="disableAndEnable(crop)" 
+  (change)="radioChanged($event)" [checked]="crop == selectedperc">
+    <div class="RInputDiv"  >
+        <p class="h-12"> {{crop}}%</p>
+    </div>
+</div>

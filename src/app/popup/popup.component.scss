@@ -1,0 +1,11 @@
+.tdUl{
+    list-style: none;
+    flex-direction: row;
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: .25rem;
+}
+.tdUl li {
+    width: 100%;
+}

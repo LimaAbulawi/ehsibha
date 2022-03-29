@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 box mt-5 br-8 p-5 text-center viewDiv  br-8" [style.height.px]="h?500:600">
+            <form *ngIf="form" [formGroup]="form">
+                <div class="col-md-3 float-start ms-7 ">
+                    <div class="form-floating mb-3 green-box">
+                        <input type="text" class="form-control clientName" id="floatingInput" placeholder="Client Name"
+                            formControlName="clientName">
+                        <label for="floatingInput">Client Name</label>
+                        <span class="validate text-start"
+                            *ngIf="clientFormControl['clientName'].touched && clientFormControl['clientName'].invalid">
+                            **this field is required </span>
+                    </div>
+                    <div class="form-floating mb-3 green-box">
+                        <input type="datetime" class="form-control assignmentDate" id="floatingInput"
+                            placeholder="Evaluation Date" formControlName="assignmentDate">
+                        <label for="floatingInput">Assignment Date</label>
+                        <span class="validate text-start"
+                            *ngIf="clientFormControl['assignmentDate'].touched && clientFormControl['assignmentDate'].invalid">
+                            **this field is required</span>
+                    </div>
+                    <div class="form-floating  green-box">
+                        <textarea class="form-control mb-3 purposeText" placeholder="The purpose of the evaluation"
+                            type="text" id="floatingTextarea2" style="height: 100px" formControlName="evaluationPurpose"
+                            type="text"></textarea>
+                        <label for="floatingTextarea2">The purpose of the evaluation</label>
+                    </div>
+                    <span class="validate text-start"
+                        *ngIf="clientFormControl['evaluationPurpose'].touched && clientFormControl['evaluationPurpose'].invalid">
+                        **this field is required </span>
+                    <div class="btn-group w-100  green-box height">
+                        <select name="" id="" [value]="client? client.a.evaluationCurrency: 0"
+                            (change)="setCurrency($event)" class="btn btn-success w-100 text-start border position-relative"
+                            [disabled]="isDisabled">
+                            <option value="0" disabled hidden>Currency</option>
+                            <option value="1">Dinar</option>
+                            <option value="2">Riyal</option>
+                            <option value="3">Dolar</option>
+                        </select>
+                        <span class="validate text-start alertSpan"
+                            *ngIf="clientFormControl['evaluationCurrency'].touched && clientFormControl['evaluationCurrency'].invalid">
+                            **this field is required</span>
+                    </div>
+                </div>
+                <div class="col-md-3 float-start ms-5 ">
+                    <div class="form-floating mb-3 green-box">
+                        <input type="text" class="form-control evaluationReportName" id="floatingInput"
+                            placeholder="Evaluation Report Name" formControlName="evaluationReportName">
+                        <label for="floatingInput">Evaluation Report Name</label>
+                        <span class="validate text-start"
+                            *ngIf="clientFormControl['evaluationReportName'].touched && clientFormControl['evaluationReportName'].invalid">
+                            **this field is required</span>
+                    </div>
+                    <div class="form-floating mb-3 green-box">
+                        <input type="datetime" class="form-control surveyDate" id="floatingInput"
+                            placeholder="Survey Date" formControlName="surveyDate">
+                        <label for="floatingInput">suvery Date</label>
+                        <span class="validate text-start"
+                            *ngIf="clientFormControl['surveyDate'].touched && clientFormControl['surveyDate'].invalid">
+                            **this field is required</span>
+                    </div>
+                    <div class="form-floating green-box">
+                        <textarea class="form-control mb-3 professionalismStandards"
+                            placeholder="professional standards" type="text" id="floatingTextarea2"
+                            style="height: 100px" formControlName="professionalismStandards"></textarea>
+                        <label for="floatingTextarea2">professional standards</label>
+                        <span class="validate text-start"
+                            *ngIf="clientFormControl['professionalismStandards'].touched && clientFormControl['professionalismStandards'].invalid">
+                            **this field is required</span>
+                    </div>
+                    <div class="btn-group w-100  green-box height">
+                        <select name="" id="" [value]="client ? client.a.status: 0"
+                            class="btn btn-success w-100 text-start curSelect status border"
+                            (change)="setStatus($event)" [disabled]="isDisabled">
+                            <option value="0" disabled hidden>Status</option>
+                            <option value="1">single</option>
+                            <option value="1">Taken</option>
+                        </select>
+                        <span class="validate text-start alertSpan" *ngIf="clientFormControl['status'].touched && clientFormControl['status'].invalid">
+                            **this field is required</span>
+                    </div>
+                </div>
+                <div class="col-md-3 float-start ms-5 ">
+                    <div class="form-floating mb-3 green-box">
+                        <input type="datetime" class="form-control evaluationDate" id="floatingInput"
+                            placeholder="Evaluation Date" formControlName="evaluationDate">
+                        <label for="floatingInput">Evaluation Date</label>
+                        <span class="validate text-start"
+                            *ngIf="clientFormControl['evaluationDate'].touched && clientFormControl['evaluationDate'].invalid">
+                            **this field is required</span>
+                    </div>
+                    <div class="form-floating mb-3 green-box">
+                        <input type="number" class="form-control refNumber" id="floatingInput"
+                            placeholder="Reference Number" formControlName="refNumber">
+                        <label for="floatingInput">Reference Number</label>
+                        <span class="validate text-start"
+                            *ngIf="clientFormControl['refNumber'].touched && clientFormControl['refNumber'].invalid">
+                            **this field is required</span>
+                    </div>
+                    <div class="form-floating green-box">
+                        <textarea class="form-control mb-3 ackOfIndep" type="text"
+                            placeholder="Acknowledgment of independence and non-conflict of interest"
+                            id="floatingTextarea2" style="height: 100px"
+                            formControlName="independenceEndorsement"></textarea>
+                        <label for="floatingTextarea2">Acknowledgment of independence</label>
+                        <span class="validate text-start"
+                            *ngIf="clientFormControl['independenceEndorsement'].touched && clientFormControl['independenceEndorsement'].invalid">
+                            **this field is required 
+                        </span>
+                    </div>
+                </div>
+                <div class="button-div">
+                    <button type="submit" id="Edit" class="btn btn-success col-md-12 float-start post ms-7"
+                        (click)="edit();" *ngIf=" isShown">Edit</button>
+                    <button type="submit" id="Add" class="btn btn-success col-md-12 float-start post ms-7"
+                        (click)="ADDNew();" *ngIf="isAdd">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

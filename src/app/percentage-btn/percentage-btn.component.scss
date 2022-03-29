@@ -1,0 +1,57 @@
+.form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+    margin-bottom: 0.125rem;
+    width: 98px;
+    float: left;
+    padding-right: 22px;
+}
+.input{
+    position: relative;
+    display: inline-flex;
+    width: 37px;
+    height: 37px;
+    margin: 1px;
+}
+.RInput{
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    opacity: 0;
+}
+.RInput:checked + .RInputDiv{
+    color: white;
+    background-color: #ffb13d!important;
+    border: 2px solid #ff9f0f!important;
+}
+.RInput:not(:checked) + .RInputDiv{
+    background-color: white;
+    border: 1px solid #b0dbba;
+    width: 38px;
+    height: 38px;
+}
+input:disabled + .RInputDiv {
+    cursor: default;
+    border: 2px solid #c4c4c4 !important ;
+    background-color:#c4c4c4  !important; 
+}
+
+.RInputDiv{
+    display: inline-flex;
+    color: #575a5b;
+    align-items: center;
+    justify-content: center;
+    padding: 17px;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+}
+
+.h-12{
+    height: 12px;
+}
+.hide{
+    display: none;
+}

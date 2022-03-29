@@ -1,0 +1,41 @@
+<form [formGroup]="corpForm" class="row g-3 position-relative">
+    <table class="table mt-5 table1 br-8 text-center">
+        <tbody class="thead-light-green">
+            <tr>
+                <td>
+                    <ul class="tdUl">
+                        <li>
+                            <div>
+                                <span class="d-grid">
+                                    <span class="title"> اختر نسبة المحصول
+                                    </span>
+                                    <span>
+                                        <div>
+                                            <percentage-btn class="d-contents" [length]="data.length" [index]="data.length-1"
+                                                (perChanged)="perChangedHandler($event)" ></percentage-btn>
+                                        </div>
+                                    </span>
+                                </span>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <span class="d-grid">
+                                    <span class="title"> المحصول
+                                    </span>
+                                    <select *ngIf="data" name="" id="" (change)="setCorp($event)">
+                                        <option disabled hidden value="" selected>choos</option>
+                                        <option *ngFor="let option of data.options" value="{{option}}">{{option}}</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-auto text-start ">
+        <button type="submit" class="btn btn-primary mb-3" (click)="addCrop();">اضافة محصول+</button>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 ">
+            <button class='btn btn-success add-new ' ><a routerLink="/ADDClient" class="text-decoration-none text-white">+Add New</a> </button>
+            <table class="table mt-5 table1 box br-8 text-center">
+                <thead class="thead-light-green">
+                    <tr>
+                        <th class="br-l-8 bg-light-green ">Client Name</th>
+                        <th class="bg-light-green">Evaluation Report</th>
+                        <th class="bg-light-green">Evaluation Date</th>
+                        <th class="bg-light-green">Survey Date</th>
+                        <th class="bg-light-green">Assignment Date</th>
+                        <th class="bg-light-green">Currency</th>
+                        <th class="bg-light-green">View</th>
+                        <th class="br-r-8 bg-light-green pe-4">Edit</th>
+                    </tr>
+                </thead>
+                <tbody class="tbodyData" >
+                    <tr *ngFor="let item of clients">
+                        <td>{{item.a.clientName}}</td>
+                        <td>  {{item.a.evaluationReportName }} </td>
+                        <td>  {{item.a.evaluationDate }} </td>
+                        <td>  {{item.a.surveyDate}} </td>
+                        <td> {{ item.a.assignmentDate }} </td>
+                        <td class="lima" >  {{item.a.evaluationCurrency}} </td>
+                        <td> <button class='btn btn-success view ' style='width: 94%;'> <a (click)="View(item.a.spAppraisalId)" >View</a></button></td>
+                        <td style='padding-right: 15px;'> <button class='btn btn-success' style='width: 100%;'>  <a (click)="Edit(item.a.spAppraisalId)" >Edit</a> </button> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

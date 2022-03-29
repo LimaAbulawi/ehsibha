@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center mt-5 ">
+            <form *ngIf="form" [formGroup]="form">
+                <button class="btn btn-danger mb-3" (click)="calculate();">start factory</button>
+                <h3 class="">Glass <span class="badge bg-secondary ">{{this.Glass}}</span></h3>
+                <h3 class="">Avocado <span class="badge bg-secondary ">{{this.Avocado}}</span></h3>
+                <input id="startJ" [ngClass]="{'start': form.value['startJ'] }" readonly *ngIf="form.value['startJ']"  formControlName="startJ">
+                <h3>flour <span class="badge bg-secondary text-start">{{this.flour}}</span></h3>
+                <input  id="startB" [ngClass]="{'start': form.value['startB'] }" readonly *ngIf="form.value['startB']" formControlName="startB">
+            </form>
+        </div>
+    </div>
+</div>

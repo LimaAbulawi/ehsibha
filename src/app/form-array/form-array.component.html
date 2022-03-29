@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 box mt-5 br-8 p-5 text-center viewDiv br-8">
+      <form [formGroup]="form" class="position-relative">
+        <ng-container formArrayName="crops">
+          <div class="col-auto text-start ">
+            <button type="submit" class="btn btn-primary mb-3" (click)="openDialog()">اضافة محصول+</button>
+          </div>
+          <div class=" text-end position-absolute info">
+            <h2 class="fw-bold"> معلومات المحصول</h2>
+          </div>
+          <ng-container *ngFor="let addcrop of crops.controls; let i = index; ">
+            <!-- let i = index; trackBy: trackByMethod -->
+            <form [formGroupName]="i">
+              <div class="row g-3 position-relative">
+                <!--  -->
+                <table class="table mt-4 table1 br-8 text-center">
+                  <tbody class="thead-light-green">
+                    <tr>
+                      <td>
+                        <ul class="tdUl">
+                          <li>
+                            <div class="btn btn-danger mt3 " (click)="deleteByIndex(i)" [ngClass]="{'hide' : i == 0}" >delete</div>
+                          </li>
+                          <li>
+                            <div>
+                              <span class="d-grid">
+                                <span class="title"> اختر نسبة المحصول
+                                </span>
+                                <span>
+                                  <div [ngClass]="{'mr-39' : i > 0}">
+                                    <percentage-btn class="d-contents" [crop]="addcrop.value['crop']" [index]="i"
+                                      [length]="crops.length" [selectedperc]="addcrop.value['percentage']"
+                                      (perChanged)="calculate($event)">
+                                    </percentage-btn>
+                                  </div>
+                                </span>
+                              </span>
+                            </div>
+                          </li>
+                          <li>
+                            <div>
+                              <span class="d-grid">
+                                <span class="title"> المحصول
+                                </span>
+                                {{ addcrop.value['crop'] }}
+                              </span>
+                            </div>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          </ng-container>
+        </ng-container>
+      </form>
+    </div>
+  </div>
+</div>
