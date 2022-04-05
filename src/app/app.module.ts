@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientComponent } from './client/client.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -20,7 +20,12 @@ import { FactoryComponent } from './factory/factory.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function craateTranLoader(http : HttpClient){
+  return new TranslateHttpLoader (http , './assets/i18n/' , '.json')
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +54,15 @@ import { RouterModule } from '@angular/router';
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    RouterModule
+    RouterModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide : TranslateLoader ,
+        useFactory : craateTranLoader ,
+        deps:[HttpClient]
+      },
+      defaultLanguage : 'ar'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,5 +11,18 @@
 <body>
   <nav-bar></nav-bar>
   <router-outlet></router-outlet>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2 class="bd-title mt-5 mb-3">{{'welcome.massege'| translate}} {{'welcome.title'| translate}}</h2>
+        <div class="center-box mt-4">
+          <select name="" id="" class="form-select " (change)="changeLang($event)" >
+            <option value="ar">arabic</option>
+            <option value="en">english</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
